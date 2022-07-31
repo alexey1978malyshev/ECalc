@@ -1,4 +1,4 @@
-package pojo;
+package com.example.electricalcalc.pojo;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;

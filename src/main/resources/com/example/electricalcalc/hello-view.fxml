@@ -13,26 +13,23 @@
 
 <AnchorPane prefHeight="761.0" prefWidth="1254.0" style="-fx-background-color: #717171; -fx-border-color: #090909; -fx-background-radius: 24px; -fx-border-radius: 24px;" styleClass="base" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.electricalcalc.HelloController">
    <children>
-      <TableView fx:id="inputTable" editable="true" fixedCellSize="1.0" layoutX="23.0" layoutY="222.0" prefHeight="94.0" prefWidth="1172.0">
+      <TableView fx:id="enter2Table" editable="true" fixedCellSize="1.0" layoutX="23.0" layoutY="222.0" prefHeight="94.0" prefWidth="927.0">
         <columns>
-          <TableColumn fx:id="objectID" prefWidth="28.0" resizable="false" text="ID" />
-          <TableColumn fx:id="adress" prefWidth="184.0" resizable="false" text="Адрес " />
-            <TableColumn fx:id="typeObject" minWidth="0.0" prefWidth="109.0" text="Тип объекта" />
-            <TableColumn fx:id="enterBox" prefWidth="75.0" text="Название ВРУ" />
-            <TableColumn fx:id="power" prefWidth="75.0" text="Мощность(кВт)" />
-            <TableColumn fx:id="connectionPoint" prefWidth="75.0" text="Точка подкл." />
+          <TableColumn fx:id="id_object" prefWidth="88.0" resizable="false" text="ID объекта" />
+            <TableColumn fx:id="connectionPoint" minWidth="0.0" prefWidth="125.0" resizable="false" text="Точка подключения" />
+            <TableColumn fx:id="consumer" prefWidth="86.0" resizable="false" text="Потребитель" />
+            <TableColumn fx:id="powerOfConsumer" prefWidth="144.0" text="Мощность(кВт)" />
             <TableColumn fx:id="voltage" prefWidth="75.0" text="Напряжение(В)" />
-            <TableColumn fx:id="lineLenght" prefWidth="75.0" text="Длина линии(м)" />
-            <TableColumn fx:id="condmaterial" prefWidth="75.0" text="Материал проводника" />
-            <TableColumn fx:id="condCross" prefWidth="147.0" text=" Сечение проводника" />
-            <TableColumn fx:id="date" prefWidth="50.0" text="Дата работ" />
+            <TableColumn fx:id="lineLength" prefWidth="112.0" resizable="false" text="Длина линии(м)" />
+            <TableColumn fx:id="conductorMaterial" prefWidth="113.0" resizable="false" text="Материал проводника" />
+            <TableColumn fx:id="cable_cross_section" prefWidth="167.0" text="Сечение(мм2)" />
         </columns>
           
-         <columnResizePolicy>
+               <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <AnchorPane fx:id="enter1" layoutX="26.0" layoutY="14.0">
+      <AnchorPane fx:id="enter1" disable="true" layoutX="26.0" layoutY="14.0">
          <children>
             <Label fx:id="titleInput" layoutX="388.0" text="Характеристика объекта">
                <font>
@@ -41,15 +38,15 @@
             </Label>
             <Button fx:id="btnInput" layoutY="112.0" mnemonicParsing="false" onAction="#onBtnInput" text="Записать ИД  в базу" textFill="#120870" />
             <Label fx:id="welcomeText" layoutX="147.0" layoutY="111.0" prefHeight="27.0" prefWidth="184.0" />
-            <TextField fx:id="txtObjectID" layoutX="3.0" layoutY="64.0" prefHeight="25.0" prefWidth="32.0" />
+            <TextField fx:id="txtObjectID" disable="true" layoutX="3.0" layoutY="64.0" opacity="0.54" prefHeight="25.0" prefWidth="32.0" />
             <TextField fx:id="txtAdress" layoutX="42.0" layoutY="64.0" prefHeight="25.0" prefWidth="154.0" />
             <TextField fx:id="txtTypeObject" layoutX="205.0" layoutY="64.0" prefHeight="25.0" prefWidth="90.0" />
             <TextField fx:id="txtEnterBox" layoutX="303.0" layoutY="64.0" prefHeight="25.0" prefWidth="90.0" />
             <TextField fx:id="txtPower" layoutX="401.0" layoutY="64.0" prefHeight="25.0" prefWidth="77.0" />
             <TextField fx:id="txtConnectionPoint" layoutX="487.0" layoutY="64.0" prefHeight="25.0" prefWidth="77.0" />
-            <TextField fx:id="txtVoltage" layoutX="572.0" layoutY="64.0" prefHeight="25.0" prefWidth="102.0" />
+            <TextField fx:id="txtVoltage" layoutX="572.0" layoutY="64.0" prefHeight="25.0" prefWidth="102.0" text="220" />
             <TextField fx:id="txtLineLenght" layoutX="682.0" layoutY="64.0" prefHeight="25.0" prefWidth="77.0" />
-            <TextField fx:id="txtCondmaterial" layoutX="768.0" layoutY="64.0" prefHeight="25.0" prefWidth="54.0" />
+            <TextField fx:id="txtCondmaterial" layoutX="768.0" layoutY="64.0" prefHeight="25.0" prefWidth="54.0" text="Cu" />
             <TextField fx:id="txtCondCross" layoutX="830.0" layoutY="64.0" prefHeight="25.0" prefWidth="61.0" />
             <TextField fx:id="txtDate" layoutX="899.0" layoutY="64.0" prefHeight="25.0" prefWidth="77.0" />
             <Label layoutX="14.0" layoutY="37.0" prefHeight="17.0" prefWidth="19.0" text="ID" />
@@ -82,7 +79,7 @@
             <TableColumn fx:id="typeObject1" minWidth="0.0" prefWidth="109.0" text="Тип объекта" />
             <TableColumn fx:id="enterBox1" prefWidth="75.0" text="Название ВРУ" />
             <TableColumn fx:id="power1" prefWidth="75.0" text="Мощность(кВт)" />
-            <TableColumn fx:id="connectionPoint1" prefWidth="75.0" text="Точка подкл." />
+            <TableColumn fx:id="connectionPoint55" prefWidth="75.0" text="Точка подкл." />
             <TableColumn fx:id="voltage1" prefWidth="75.0" text="Напряжение(В)" />
             <TableColumn fx:id="lineLenght1" prefWidth="75.0" text="Длина линии(м)" />
             <TableColumn fx:id="condmaterial1" prefWidth="75.0" text="Материал проводника" />
@@ -94,6 +91,7 @@
          </columnResizePolicy>
       </TableView>
       <Button fx:id="btnClose" layoutX="69.0" layoutY="691.0" mnemonicParsing="false" onAction="#handleBtnClose" text="Закрыть" />
+      <Button fx:id="btnAvtiateEnter1" layoutX="1049.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleBtnActivateEnter1" text="Добавить объект" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

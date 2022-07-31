@@ -1,7 +1,6 @@
 package com.example.electricalcalc;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import pojo.enteredData1;
+import com.example.electricalcalc.pojo.enteredData1;
 
 import java.sql.*;
 import java.util.ArrayList;

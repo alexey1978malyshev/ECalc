@@ -1,14 +1,14 @@
 package com.example.electricalcalc;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import pojo.enteredData1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,87 +19,85 @@ import java.util.List;
 
 public class HelloController {
 
+   @FXML
+   private AnchorPane enter1;
     @FXML
     private Button btnClose;
     @FXML
     private Label titleInput;
     @FXML
-    TableView<enteredData1> inputTable;
+    TableView<enteredData2>enter2Table;
     @FXML
-    TableColumn<enteredData1,Integer> objectID;
+    TableColumn<enteredData2, Integer> id_object;
     @FXML
-    TableColumn<enteredData1, String> adress;
+    TableColumn<enteredData2, String> connectionPoint;
     @FXML
-    TableColumn<enteredData1, String> typeObject;
+    TableColumn<enteredData2, String> consumer;
     @FXML
-    TableColumn<enteredData1, String> enterBox;
+    TableColumn<enteredData2, Double> powerOfConsumer;
     @FXML
-    TableColumn<enteredData1, Double> power;
+    TableColumn <enteredData2, Integer>voltage;
     @FXML
-    TableColumn<enteredData1, String> connectionPoint;
+    TableColumn <enteredData2, Integer> lineLength;
     @FXML
-    TableColumn <enteredData1, Double>voltage;
+    TableColumn<enteredData2, String> conductorMaterial;
     @FXML
-    TableColumn <enteredData1, Integer>lineLenght;
+    TableColumn<enteredData2, Double> cable_cross_section;
     @FXML
-    TableColumn<enteredData1, String> condmaterial;
-    @FXML
-    TableColumn<enteredData1, Double> condCross;
-    @FXML
-    TableColumn<enteredData1, String> date;
-    @FXML
-    private Button btnInput;
+    private Button btnInput, btnActivateEnter1;
     @FXML
     private Label welcomeText;
     @FXML
     TextField txtObjectID, txtAdress, txtTypeObject, txtEnterBox, txtPower, txtConnectionPoint, txtVoltage, txtLineLenght, txtCondmaterial, txtCondCross, txtDate;
-    private final ObservableList<enteredData1> enteredObservableList = FXCollections.observableArrayList();
-    public List<String> enteredData = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "HelloController{" +
-                "enteredData=" + enteredData +
-                '}';
-    }
+    private ObservableList<enteredData2> consumerList = FXCollections.observableArrayList();
+
+
+    public List<String> mainData = new ArrayList<>();
+
 
     @FXML
     private void initialize(){
         initData();
-        objectID.setCellValueFactory(new PropertyValueFactory<enteredData1, Integer>("ID"));
-        adress.setCellValueFactory(new PropertyValueFactory<enteredData1,String>("Адрес"));
-        typeObject.setCellValueFactory(new PropertyValueFactory<enteredData1,String>("Тип объекта"));
-        enterBox.setCellValueFactory(new PropertyValueFactory<enteredData1,String >("Название ВРУ"));
-        power.setCellValueFactory(new PropertyValueFactory<enteredData1, Double>("МощностЬ"));
-        connectionPoint.setCellValueFactory(new PropertyValueFactory<enteredData1,String>("Точка подключения"));
-        voltage.setCellValueFactory(new PropertyValueFactory<enteredData1,Double>("Напряжение"));
-        lineLenght.setCellValueFactory(new PropertyValueFactory<enteredData1,Integer>("Длина линии"));
-        condmaterial.setCellValueFactory(new PropertyValueFactory<enteredData1,String>("Материал проводника"));
-        condCross.setCellValueFactory(new PropertyValueFactory<enteredData1,Double>("Сечение проводника"));
-        date.setCellValueFactory(new PropertyValueFactory<enteredData1,String>("Дата работ"));
+        id_object.setCellValueFactory(new PropertyValueFactory<enteredData2, Integer>("id_object"));
+        connectionPoint.setCellValueFactory(new PropertyValueFactory<enteredData2,String>("connectionPoint"));
+        consumer.setCellValueFactory(new PropertyValueFactory<enteredData2,String >("consumer"));
+      /* powerOfConsumer.setCellValueFactory(new PropertyValueFactory<enteredData2, Double>("Мощность(кВт)"));
+        voltage.setCellValueFactory(new PropertyValueFactory<enteredData2,Integer>("Напряжение(В)"));
+        lineLength.setCellValueFactory(new PropertyValueFactory<enteredData2,Integer>("Длина линии(м)"));
+        conductorMaterial.setCellValueFactory(new PropertyValueFactory<enteredData2,String>("Материал проводника"));
+        cable_cross_section.setCellValueFactory(new PropertyValueFactory<enteredData2,Double>("Сечение(мм2)"));*/
 
-        inputTable.setItems(enteredObservableList);
+
+        enter2Table.setItems(consumerList);
+        enter2Table.setEditable(true);
+
+
     }
 
     private void initData(){
-        enteredObservableList.add(new enteredData1(enteredData));
+        consumerList.add(new enteredData2());
+        consumerList.get(0).setId_object(99);
+        consumerList.get(0).setConnectionPoint("ГРЩ");
+        consumerList.get(0).setConsumer("Tesla");
     }
     @FXML
     protected void onBtnInput() {
-        enteredData.clear();
-        enteredData.add(txtObjectID.getText());
-        enteredData.add(txtAdress.getText());
-        enteredData.add(txtTypeObject.getText());
-        enteredData.add(txtEnterBox.getText());
-        enteredData.add(txtPower.getText());
-        enteredData.add(txtConnectionPoint.getText());
-        enteredData.add(txtVoltage.getText());
-        enteredData.add(txtLineLenght.getText());
-        enteredData.add(txtCondmaterial.getText());
-        enteredData.add(txtCondCross.getText());
-        enteredData.add(txtDate.getText());
-        System.out.println(enteredData.toString());
+        mainData.clear();
+        mainData.add(txtAdress.getText());
+        mainData.add(txtTypeObject.getText());
+        mainData.add(txtEnterBox.getText());
+        mainData.add(txtPower.getText());
+        mainData.add(txtConnectionPoint.getText());
+        mainData.add(txtVoltage.getText());
+        mainData.add(txtLineLenght.getText());
+        mainData.add(txtCondmaterial.getText());
+        mainData.add(txtCondCross.getText());
+        mainData.add(txtDate.getText());
+        System.out.println("EnteredData: "  + mainData.toString());
+
         connection();
+
     }
     @FXML
     private void connection() {
@@ -112,7 +110,7 @@ public class HelloController {
             } else {
                 System.out.println("Failed to make connection!");
             }
-            runInsertEnteredDataToDB(enteredData, conn);
+            runInsertEnteredDataToDB(mainData, conn);
             //runSelect(conn);
         } catch (
                 SQLException e) {
@@ -123,16 +121,41 @@ public class HelloController {
         }
     }
     @FXML
-   private void runInsertEnteredDataToDB(List<String> enter, Connection conn)  throws SQLException{
+    private void runInsertEnteredDataToDB(List<String> enter, Connection conn)  throws SQLException{
 
-        String q = "insert into public.i1(id, adress, typeOfobject, nameOfEnterBox, permittedPower, connectionPoint, voltage, lineLength, conductorMaterial, cable_cross_section, date) values ("+enteredData.get(0)+","+enteredData.get(1)+","+enteredData.get(2)+","+enteredData.get(3)+","+enteredData.get(4)+","+enteredData.get(5)+","+enteredData.get(6)+","+enteredData.get(7)+","+enteredData.get(8)+","+enteredData.get(9)+","+enteredData.get(10)+")";
+        for (int i=0;i<enter.lastIndexOf(enter); i++){ // попытка обрботать пустые строки
+            if(mainData.get(i) == "")
+                mainData.set(i,"'нет данных'"); //строка не инсертится
+        }
+        String q = "insert into public.i1(adress, \"typeOfobject\", \"nameOfEnterBox\", \"permittedPower\", \"connectionPoint\", voltage, \"lineLength\", \"conductorMaterial\", cable_cross_section, date) values ('" + mainData.get(0) + "','" + mainData.get(1) + "','" + mainData.get(2) + "','" + mainData.get(3) + "','" + mainData.get(4) + "'," + mainData.get(5) + ",'" + mainData.get(6) + "','" + mainData.get(7) + "'," + mainData.get(8) + ",'" + mainData.get(9) + "')";
         PreparedStatement statement = conn.prepareStatement(q);
         statement.execute();
+        txtObjectID.setId("select id from public.i1");  // попытка получить id объекта из базы
+        enter1.setDisable(true);                        //поля ввода данных становятся неактивными
+        conn.close();
+
     }
     @FXML
-    private void handleBtnClose(ActionEvent event){
+    private void handleBtnClose(ActionEvent event){     //нажатие кнопки  'закрыть'
         Stage s = (Stage) btnClose.getScene().getWindow();
         s.close();
+
+    }
+    @FXML
+    private void handleBtnActivateEnter1(ActionEvent event){   //активация полей ввода и их очистка
+        enter1.setDisable(false);
+        for (Node child : enter1.getChildren()) {
+            txtObjectID.clear();
+            txtAdress.clear();
+            txtEnterBox.clear();
+            txtTypeObject.clear();
+            txtPower.clear();
+            txtDate.clear();
+            txtCondCross.clear();
+            txtLineLenght.clear();
+            txtVoltage.clear();
+            txtConnectionPoint.clear();
+        }
 
     }
 }
